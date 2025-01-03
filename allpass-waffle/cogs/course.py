@@ -21,10 +21,24 @@ class Course(commands.Cog):
             await interaction.response.send_message(f"Category '{category_name}' already exists.", ephemeral=True)
         else:
             new_category = await guild.create_category(category_name)
-            await guild.create_text_channel('課程公告', category=new_category)
-            await guild.create_text_channel('筆記', category=new_category)
-            await guild.create_text_channel('考試與提問', category=new_category)
+            await guild.create_text_channel('📢課程公告', category=new_category)
+            await guild.create_text_channel('🗒️筆記', category=new_category)
+            await guild.create_text_channel('🤔考試與提問', category=new_category)
             await interaction.response.send_message(f"Category '{category_name}' and its channels have been created.", ephemeral=True)
+
+    @app_commands.command(name="delete_category", description="Delete a category from the server")
+    @app_commands.guild_only()
+    async def delete_category(self, interaction: discord.Interaction, category_name: str):
+        guild = interaction.guild
+        category = discord.utils.get(guild.categories, name=category_name)
+        
+        if category:
+            for channel in category.channels:
+                await channel.delete()
+            await category.delete()
+            await interaction.response.send_message(f"Category '{category_name}' has been deleted.", ephemeral=True)
+        else:
+            await interaction.response.send_message(f"Category '{category_name}' does not exist.", ephemeral=True)
 
     @commands.command()
     async def add_course(self, ctx, course_name: str):
@@ -46,6 +60,8 @@ class Course(commands.Cog):
         category = discord.utils.get(guild.categories, name=course_name)
         
         if category:
+            for channel in category.channels:
+                await channel.delete()
             await category.delete()
             await ctx.send(f"Category '{course_name}' has been deleted.")
         else:
