@@ -7,7 +7,7 @@ A waffle that assists your study group by offering structure, reorganizing files
 ## Installation
 Ensure you have Python 3.8 or higher installed. Then, follow these steps:
 ```
-git clone https://github.com/trc0214/allpass-waffle.git .
+git clone https://github.com/trc0214/allpass-waffle.git ./allpass-waffle
 cd ./allpass-waffle
 python -m venv env
 CALL env/scripts/activate.bat
