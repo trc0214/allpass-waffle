@@ -9,6 +9,7 @@ Ensure you have Python 3.8 or higher installed. Then, follow these steps:
 ```
 git clone https://github.com/trc0214/allpass-waffle.git
 cd ./allpass-waffle
+python -m venv env
 .\env\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
