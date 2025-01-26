@@ -5,12 +5,12 @@ ALLPASS Waffle! 🧇
 A waffle that assists your study group by offering structure, reorganizing files, AI question answering, and more!
 
 ## Installation
+Ensure you have Python 3.8 or higher installed. Then, follow these steps:
 ```
 git clone https://github.com/trc0214/allpass-waffle.git
 cd ./allpass-waffle
 CALL env/scripts/activate.bat
 pip install -r requirements.txt
-py main.py
 ```
 
 ## Environment Variables
@@ -20,13 +20,29 @@ cp .env.example .env
 ```
 
 ## Usage
-Provide examples and instructions for using the project.
+To use the bot, follow these steps:
+1. Ensure you have set the `DISCORD_TOKEN` in your `.env` file.
+2. Run the bot using the following command:
+    ```
+    py main.py
+    ```
+3. Use the following commands in your Discord server:
+    - `$load <extension>`: Load a specific cog.
+    - `$unload <extension>`: Unload a specific cog.
+    - `$reload <extension>`: Reload a specific cog.
+    - `/add_category <category_name>`: Add a new category with predefined channels.
+    - `/delete_category <category_name>`: Delete an existing category and its channels.
 
 ## Contributing
-Explain how others can contribute to the project.
+To contribute to this project:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
-Provide contact information for questions or feedback.
+For questions or feedback, please contact the project maintainer at [your-email@example.com].
