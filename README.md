@@ -1,11 +1,10 @@
-# Project Title
-ALLPASS Waffle! 🧇
+# ALLPASS Waffle! 🧇
 
 ## Description
 A waffle that assists your study group by offering structure, reorganizing files, AI question answering, and more!
 
 ## Installation
-Ensure you have Python 3.8 or higher installed. Then, follow these steps:
+Ensure you have installed Python 3.8 or higher. Then, follow these steps:
 ```
 git clone https://github.com/trc0214/allpass-waffle.git ./allpass-waffle
 cd ./allpass-waffle
