@@ -15,10 +15,9 @@ class NotesClassifier(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.cog.listener()
+    @commands.Cog.listener()
     async def on_ready(self):
         print(f"已成功載入 NotesClassifier")
-    
 
     @commands.Cog.listener()
     async def on_message(self, ctx):
