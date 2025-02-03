@@ -1,15 +1,29 @@
 import discord
 from discord.ext import commands
 
+class CourseButton(discord.ui.Button):
+    def __init__(self, label, message):
+        super().__init__(style=discord.ButtonStyle.primary, label=label, custom_id=f'button_{label}')
+        self.message = message
+
+    async def callback(self, interaction: discord.Interaction):
+        await interaction.response.send_message(f'You clicked {self.label}', ephemeral=True)
+        for category in interaction.guild.categories:
+            if category.name == self.label:
+                for channel in category.channels:
+                    if '筆記' in channel.name:
+                        self.style = discord.ButtonStyle.success
+                        self.disabled = True
+                        self.view.stop()
+                        await channel.send(self.message.content)
+                        await self.message.delete()
+                        return
+
 class CoursesButtons(discord.ui.View):
-    def __init__(self, *, timeout=180, courses):
+    def __init__(self, courses, message, *, timeout=180):
         super().__init__(timeout=timeout)
         for course in courses:
-            self.add_item(discord.ui.Button(style=discord.ButtonStyle.primary, label=course, custom_id=f'button_{course}'))
-    
-    async def on_button_click(self, button, interaction):
-        await interaction.response.send_message(f'You clicked {button.label}', ephemeral=True)
-
+            self.add_item(CourseButton(label=course, message=message))
     
 class NotesClassifier(commands.Cog):
     def __init__(self, bot):
@@ -18,20 +32,22 @@ class NotesClassifier(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print(f"已成功載入 NotesClassifier")
-
+    
     @commands.Cog.listener()
-    async def on_message(self, ctx):
-        if ctx.author == self.bot.user:
+    async def on_message(self, message):
+        if message.author == self.bot.user:
             return
-        if '筆記上傳' not in ctx.channel.name: 
+        if '筆記上傳' not in message.channel.name: 
             return
-        guild = ctx.guild
-        categories = [category.name for category in guild.categories]
-        for category in categories:
-            for channel, category in category.channels:
-                if channel.name == '🗒️筆記':
-                    courses = category.name
-        await ctx.send("Please select a course:", view=CoursesButtons(courses))
-
+        
+        await message.add_reaction('📚')
+        guild = message.guild
+        courses = []
+        for category in guild.categories:
+            for channel in category.channels:
+                if '筆記' in channel.name:
+                    courses.append(category.name)
+        await message.channel.send("Please select a course:", view=CoursesButtons(courses, message=message))
+        
 async def setup(bot):
     await bot.add_cog(NotesClassifier(bot))

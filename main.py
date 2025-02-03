@@ -16,7 +16,7 @@ def find_venv():
 
 def run_scripts():
 
-    install_requirements()
+    #install_requirements()
 
     scripts = [
         "allpass-waffle\\bot.py",
