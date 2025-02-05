@@ -19,7 +19,7 @@ def run_scripts():
     #install_requirements()
 
     scripts = [
-        "allpass-waffle/bot.py",
+        "./allpass-waffle/bot.py",
     ]
     
     python_executable = find_venv() or sys.executable
