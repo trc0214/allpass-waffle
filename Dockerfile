@@ -1,12 +1,13 @@
 FROM python:3.10.2-slim
 
-WORKDIR /DiscordBot/AllpassWaffleBot
+WORKDIR /app
+
 COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN useradd -m discordbot && chown -R discordbot:discordbot /DiscordBot
+RUN useradd -m discordbot && chown -R discordbot:discordbot /app
 USER discordbot
 
-CMD ["python3", "main.py"]
+CMD ["python", "allpass-waffle/bot.py"]

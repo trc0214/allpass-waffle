@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  allpass-waffle:
+    image: timray/allpass-waffle:latest
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
