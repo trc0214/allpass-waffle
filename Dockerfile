@@ -9,4 +9,4 @@ COPY . .
 RUN useradd -m discordbot && chown -R discordbot:discordbot /DiscordBot
 USER discordbot
 
-CMD ["python3", "setup.py"]
+CMD ["python3", "main.py"]
