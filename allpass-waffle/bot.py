@@ -4,6 +4,9 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
+# Load environment variables from .env into the process environment
+load_dotenv()
+
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix = "$", intents = intents)
 
@@ -45,7 +48,10 @@ async def load_extensions():
 async def main():
     async with bot:
         await load_extensions()
-        await bot.start(os.getenv("DISCORD_TOKEN"))
+        token = os.getenv("DISCORD_TOKEN")
+        if not token:
+            raise RuntimeError("DISCORD_TOKEN not set. Ensure .env contains DISCORD_TOKEN or set the env var.")
+        await bot.start(token)
 
 # 確定執行此py檔才會執行
 if __name__ == "__main__":
