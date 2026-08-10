@@ -3,24 +3,33 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Unit test / coverage reports
-test/
+# Test / coverage artifacts
 .pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
 
-# pyenv
+# Python tooling
 .python-version
-
-# pyflow
 __pypackages__/
 
-# Environments
+# Environments and secrets
 .env
-.venv
+.env.*
+!.env.example
+.venv/
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
 
-# VSCode
-.vscode
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Runtime / debug output
+*.log
