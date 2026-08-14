@@ -40,6 +40,9 @@ Commits record repository history; Issues and pull requests record lifecycle sta
 
 ## Issues and pull requests
 - An issue represents the problem or goal; a pull request represents the implementation.
+- Standard Bug/Implementation Issue Forms require `Drafted By` for the actual human or AI agent/model that produced the initial Issue content. Preserve it as immutable provenance; do not overwrite it during handoff, revision, or implementation.
+- If another AI materially changes Issue-defining content such as scope, acceptance criteria, reproduction, impact, or dependencies, add one concise Issue comment beginning with `AI-Contributor: <agent/model>` and `Role: Planning`, `Role: Revision`, or `Role: Synthesis`. Routine wording edits do not require attribution.
+- GitHub account identity records the operator account and must not be used to infer the actual AI contributor when explicit attribution exists.
 - Do not use GitHub closing keywords until acceptance criteria are actually satisfied and the issue should close when merged.
 - PR descriptions should state scope, important decisions, verification, risks/limitations, and remaining work.
 
