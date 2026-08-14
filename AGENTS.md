@@ -36,17 +36,7 @@ Run the most relevant available checks for the files changed. If tests exist for
 
 ## Commits
 Use Conventional Commits where practical: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `ci`, `build`.
-
-For AI-led checkpoints, include useful metadata when appropriate:
-```text
-AI-Agent: <agent/model>
-Issue: #<number> | N/A
-Work-State: In-Progress | Checkpoint | Resolved
-Problem: <goal or problem>
-Verification: <tests/lint/build or Not run + reason>
-```
-
-Commit meaningful checkpoints rather than every trivial edit.
+Commits record repository history; Issues and pull requests record lifecycle state, verification, and handoff context. Do not add custom work-state metadata to commit messages.
 
 ## Issues and pull requests
 - An issue represents the problem or goal; a pull request represents the implementation.
